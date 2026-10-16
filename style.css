@@ -511,3 +511,10 @@ input.cell.qty-man{width:122px}
   td .qtyw{display:flex;align-items:stretch}
   .stb{padding:3px 6px;font-size:10px;white-space:normal}
 }
+/* choice boxes: grey placeholder, dark green "Complete" */
+select.cell.pick.empty{color:#94a3b8!important;font-weight:400}
+select.cell.pick option{color:#0f1b33;font-weight:600}
+.st-complete{color:#14532d!important}
+/* "Complete": solid dark green so it is noticed at a glance */
+.st-complete{background:#166534!important;border-color:#14532d!important;color:#fff!important;font-weight:700!important}
+select.cell.pick.st-complete option{background:#fff;color:#0f1b33}

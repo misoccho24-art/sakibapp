@@ -9,30 +9,43 @@ const STAGES = ["Complete","Not Complete","On going"];
 const stageCls = v => STAGES.includes(v) ? "st-"+v.toLowerCase().replace(/\s+/g,"-") : "";
 function fieldControl(k,v,i){
   v=v==null?"":String(v); const di=i==null?"":' data-i="'+i+'"';
+  // "Choose" is only a grey placeholder: it shows when nothing is picked but cannot be picked itself
+  const ph='<option value="" disabled hidden'+(v?"":" selected")+'>Choose</option>', empty=v?"":" empty";
   if(k==="qty"){
-    const manual=!!v&&!QTY_PRESETS.includes(v);
-    return '<span class="qtyw"><select class="cell pick" data-k="qty"'+di+'><option value="">Choose</option>'+
+    const typed=!!v&&!QTY_PRESETS.includes(v); // a typed quantity is shown in the box itself
+    return '<span class="qtyw"><select class="cell pick'+empty+'" data-k="qty"'+di+'>'+ph+
       QTY_PRESETS.map(q=>'<option'+(q===v?" selected":"")+'>'+q+'</option>').join("")+
-      '<option value="__manual"'+(manual?" selected":"")+'>Manual</option></select>'+
-      '<input class="cell qty-man" data-k="qty"'+di+' inputmode="numeric" placeholder="Type quantity" value="'+(manual?esc(v):"")+'"'+(manual?"":" hidden")+'></span>';
+      (typed?'<option value="'+esc(v)+'" data-typed="1" selected>'+esc(v)+'</option>':"")+
+      '<option value="__manual">Manual</option></select>'+
+      '<input class="cell qty-man" data-k="qty"'+di+' inputmode="numeric" placeholder="Type quantity, then Enter" hidden></span>';
   }
   const old=v&&!STAGES.includes(v)?'<option selected>'+esc(v)+'</option>':""; // a value typed before the choices existed is kept
-  return '<select class="cell pick '+stageCls(v)+'" data-k="'+k+'"'+di+'><option value="">Choose</option>'+
+  return '<select class="cell pick '+stageCls(v)+empty+'" data-k="'+k+'"'+di+'>'+ph+
     STAGES.map(o=>'<option'+(o===v?" selected":"")+'>'+o+'</option>').join("")+old+'</select>';
 }
 // one listener for all choice boxes inside root; onSet(i, field, value)
 function bindFieldControls(root,onSet){
+  const finishTyping=man=>{ // typed quantity: show it in the box and hide the typing field
+    const sel=man.parentNode.querySelector("select"), v=man.value.trim();
+    sel.querySelectorAll("option[data-typed]").forEach(o=>o.remove());
+    if(v){ const o=document.createElement("option"); o.value=v; o.textContent=v; o.dataset.typed="1"; sel.insertBefore(o,sel.querySelector('option[value="__manual"]')); sel.value=v; sel.classList.remove("empty"); }
+    else { sel.value=""; sel.classList.add("empty"); }
+    man.hidden=true; onSet(man.dataset.i,"qty",v);
+  };
   root.addEventListener("change",e=>{
-    const t=e.target; if(!t.matches||!t.matches("select.pick")) return;
+    const t=e.target; if(!t.matches) return;
+    if(t.matches("input.qty-man")){ finishTyping(t); return; }
+    if(!t.matches("select.pick")) return;
     const k=t.dataset.k, i=t.dataset.i;
     if(k==="qty"){
       const man=t.parentNode.querySelector(".qty-man");
-      if(t.value==="__manual"){ man.hidden=false; man.focus(); onSet(i,"qty",man.value.trim()); return; }
-      man.hidden=true; man.value="";
+      if(t.value==="__manual"){ const typed=t.querySelector("option[data-typed]"); man.value=typed?typed.value:""; man.hidden=false; man.focus(); man.select(); return; }
+      man.hidden=true; t.querySelectorAll("option[data-typed]").forEach(o=>{ if(o.value!==t.value) o.remove(); });
+      t.className="cell pick";
     }else t.className="cell pick "+stageCls(t.value);
     onSet(i,k,t.value);
   });
-  root.addEventListener("input",e=>{ const t=e.target; if(t.matches&&t.matches("input.qty-man")) onSet(t.dataset.i,"qty",t.value.trim()); });
+  root.addEventListener("keydown",e=>{ const t=e.target; if(t.matches&&t.matches("input.qty-man")&&e.key==="Enter"){ e.preventDefault(); t.blur(); } });
 }
 // coloured label for a stage status (order pages)
 function stageBadge(v){ return STAGES.includes(v)?'<span class="stb '+stageCls(v)+'">'+v+'</span>':esc(v); }
