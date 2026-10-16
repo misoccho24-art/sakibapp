@@ -1,0 +1,420 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sakib Apparels Ltd - Knitwear Manufacturer</title>
+<meta name="description" content="Sakib Apparels Ltd - your trusted knitwear manufacturing partner in Hemayetpur, Savar, Dhaka, Bangladesh. Polos, T-shirts, hoodies, sweatshirts, tops and more.">
+<style>
+:root{--blue:#2563eb;--deep:#1e3a8a;--ink:#0f1b33;--mute:#5f6f8c;--line:#e3e9f5;--soft:#f4f7fd}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+section,footer{overflow-x:clip}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* top strip + header */
+.strip{background:var(--deep);color:#dbe6ff;font-size:13px}
+.strip .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.strip span{white-space:nowrap}
+header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 4px 18px rgba(30,58,138,.06)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:21px;font-weight:700;letter-spacing:.3px;color:var(--blue)}
+nav{display:flex;align-items:center;gap:26px}
+nav a{text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#334155}
+nav a:hover{color:var(--blue)}
+nav a.cta{background:var(--blue);color:#fff;padding:10px 18px;border-radius:8px;letter-spacing:.06em}
+nav a.cta:hover{background:var(--deep);color:#fff}
+.navc{display:flex;flex-direction:column;gap:2px;padding-left:22px;border-left:2px solid var(--line)}
+.navc a{text-transform:none;letter-spacing:.02em;font-size:13px;color:var(--blue)}
+.navc a:hover{color:var(--deep)}
+.mcontact{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 28px;padding:8px 16px;background:var(--blue);color:#dbeafe;font-size:13px;font-weight:700}
+.mcontact span{white-space:nowrap}
+.mcontact a{color:#fff;text-decoration:none}
+.mcontact a:hover{text-decoration:underline}
+@media(max-width:600px){.mcontact{gap:2px 18px;font-size:12px;padding:7px 12px}}
+@media(max-width:1180px) and (min-width:901px){nav{gap:18px}nav a{letter-spacing:.06em}}
+.burger{display:none;border:1px solid var(--line);background:#fff;border-radius:8px;padding:9px 12px;font-size:13px;font-weight:700;color:var(--blue);cursor:pointer}
+
+/* hero slider */
+.hero{position:relative;height:min(86vh,680px);min-height:440px;overflow:hidden;background:var(--deep)}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+.slide.on{opacity:1}
+.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,25,70,.9),rgba(10,25,70,.6) 55%,rgba(10,25,70,.3))}
+.hero .copy{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;color:#fff;max-width:640px}
+.hero small{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#dbeafe;font-weight:700;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.hero h1{font-size:clamp(34px,5.4vw,58px);line-height:1.1;margin:14px 0 16px}
+.hero p{font-size:18px;color:#e2e8f0;margin:0 0 28px}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;font-weight:700;padding:14px 26px;border-radius:8px;letter-spacing:.04em}
+.btn:hover{background:#1d4ed8}
+.btn.ghost{background:transparent;border:2px solid #fff;margin-left:10px}
+.btn.ghost:hover{background:#fff;color:var(--deep)}
+.dots{position:absolute;z-index:3;left:0;right:0;bottom:26px;display:flex;justify-content:center;gap:10px}
+.dots button{width:12px;height:12px;border-radius:50%;border:2px solid #fff;background:transparent;cursor:pointer;padding:0}
+.dots button.on{background:#fff}
+
+/* sections */
+section.block{padding:84px 0}
+section.alt{background:var(--soft)}
+.head{text-align:center;max-width:680px;margin:0 auto 46px}
+.head small{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.head h2{font-size:clamp(28px,3.6vw,38px);margin:10px 0 12px;line-height:1.2}
+.head p{color:var(--mute);margin:0}
+.bar{width:60px;height:3px;background:var(--blue);margin:16px auto 0;border-radius:3px}
+
+/* welcome */
+.welcome{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.welcome h2{font-size:clamp(28px,3.6vw,38px);line-height:1.2;margin:10px 0 18px}
+.welcome small{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.welcome p{color:#475569;margin:0 0 16px}
+.welcome .pic{position:relative}
+/* photo stack ("wallet"): back photos peek out, the front one sweeps away on click */
+.stack{position:relative;aspect-ratio:4/3;cursor:pointer;outline:0;margin:18px 18px 0 0}
+.stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 18px 40px rgba(30,58,138,.22);border:4px solid #fff;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .55s;transform-origin:50% 100%}
+.stack img[data-pos="0"]{z-index:4;transform:none}
+.stack img[data-pos="1"]{z-index:3;transform:translate(12px,-12px) rotate(3deg) scale(.97)}
+.stack img[data-pos="2"]{z-index:2;transform:translate(24px,-22px) rotate(6deg) scale(.94)}
+.stack img[data-pos="3"]{z-index:1;transform:translate(24px,-22px) rotate(6deg) scale(.94);opacity:0}
+.stack img.out{z-index:5;transform:translate(-115%,30px) rotate(-14deg);opacity:0;transition:transform .5s cubic-bezier(.5,0,.75,0),opacity .5s .1s}
+.stack img.reset{transition:none}
+.stack:hover img[data-pos="0"]{transform:translateY(-4px)}
+.stack:focus-visible img[data-pos="0"]{box-shadow:0 0 0 4px #93c5fd,0 18px 40px rgba(30,58,138,.22)}
+.welcome .badge{z-index:6;transition:transform .3s}
+.welcome .badge.flip{animation:badgeFlip .5s ease}
+@keyframes badgeFlip{0%{transform:scale(1)}40%{transform:scale(.85);opacity:.4}100%{transform:scale(1);opacity:1}}
+.taphint{position:absolute;right:30px;bottom:12px;z-index:6;background:rgba(15,27,51,.65);color:#fff;font-size:12px;padding:6px 12px;border-radius:999px;pointer-events:none;letter-spacing:.06em}
+.welcome .badge{position:absolute;left:-22px;bottom:-22px;background:var(--blue);color:#fff;border-radius:14px;padding:18px 22px;box-shadow:0 14px 30px rgba(37,99,235,.35)}
+.welcome .badge b{display:block;font-size:34px;line-height:1}
+.welcome .badge span{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ticks{list-style:none;padding:0;margin:0 0 26px;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.ticks li{position:relative;padding-left:22px;font-weight:700;font-size:15px}
+.ticks li::before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:2px;background:var(--blue)}
+
+/* products */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.prod{position:relative;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 8px 24px rgba(30,58,138,.07);transition:transform .25s,box-shadow .25s}
+.prod:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(30,58,138,.14)}
+.prod img{width:100%;aspect-ratio:4/3;object-fit:contain;background:#fff;border-bottom:1px solid var(--line)}
+.prod div{padding:18px 20px 22px}
+.prod h3{margin:0 0 6px;font-size:19px}
+.prod p{margin:0;color:var(--mute);font-size:14px}
+
+/* clients */
+.clients{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.client{height:96px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:12px;background:#fff;padding:0 14px}
+.client img{height:40px;max-width:120px;object-fit:contain;flex:none}
+.client .wordmark{font:italic 700 24px Georgia,serif;color:#e0457b;flex:none}
+.client span{display:block;overflow:hidden;white-space:nowrap;max-width:0;opacity:0;transform:translateX(-24px);font-weight:700;letter-spacing:.14em;color:#334155;font-size:15px;
+  transition:max-width 2.2s cubic-bezier(.25,.8,.25,1) var(--d),opacity 1.6s ease var(--d),transform 2.2s cubic-bezier(.25,.8,.25,1) var(--d),margin 2.2s cubic-bezier(.25,.8,.25,1) var(--d)}
+.clients.in .client span{max-width:170px;opacity:1;transform:none;margin-left:16px}
+
+/* certificates */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cert{background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:12px;padding:28px 26px;box-shadow:0 8px 24px rgba(30,58,138,.06)}
+.cert .seal{width:54px;height:54px;border-radius:50%;border:3px solid var(--blue);display:grid;place-items:center;font-weight:700;color:var(--blue);font-size:13px;margin-bottom:16px}
+.cert h3{margin:0 0 8px;font-size:19px}
+.cert p{margin:0;color:var(--mute);font-size:14px}
+
+/* excellence (stats) */
+.stats{background:linear-gradient(120deg,var(--deep),var(--blue));color:#fff}
+.stats .head small{color:#bfdbfe}.stats .head p{color:#dbe6ff}.stats .bar{background:#fff}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.num{text-align:center;padding:26px 10px;border:1px solid rgba(255,255,255,.25);border-radius:14px;background:rgba(255,255,255,.07)}
+.num b{display:block;font-size:clamp(32px,4vw,46px);line-height:1.1}
+.num span{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#dbe6ff}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:860px;margin:0 auto}
+.card p{overflow-wrap:anywhere}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;text-align:center}
+.card h3{margin:0 0 8px;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+.card p{margin:0;color:#334155}
+
+/* footer */
+footer{background:#0b1220;color:#cbd5e1;padding:56px 0 0}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px;padding-bottom:40px}
+footer h4{color:#fff;margin:0 0 14px;font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+footer a{display:block;text-decoration:none;color:#cbd5e1;margin:0 0 8px;font-size:14px}
+footer a:hover{color:#fff}
+footer p{font-size:14px;margin:0 0 8px}
+.copyright{background:var(--blue);color:#fff;text-align:center;font-size:13px;padding:16px 20px}
+
+/* phones and tablets */
+@media(max-width:900px){
+  .burger{display:block}
+  header{position:sticky}
+  nav{position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line);display:none;box-shadow:0 14px 24px rgba(30,58,138,.1)}
+  nav.open{display:flex}
+  nav a{padding:15px 20px;border-top:1px solid var(--line)}
+  nav a.cta{margin:12px 20px 16px;text-align:center}
+  .navc{display:none}
+  .navc a{font-size:15px;font-weight:700}
+  .welcome{grid-template-columns:1fr;gap:40px}
+  .welcome .badge{left:12px;bottom:-18px}
+  .products,.certs{grid-template-columns:1fr 1fr}
+  .nums{grid-template-columns:repeat(3,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  section.block{padding:60px 0}
+  .strip .wrap{justify-content:center}
+  .hero p{font-size:16px}
+  .btn.ghost{margin:10px 0 0}
+  .products,.certs,.ticks,.fgrid{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr 1fr}
+}
+/* ===== phones: compact, thumb-friendly layout ===== */
+.strip a{text-decoration:none;white-space:nowrap}
+a.card{display:block;text-decoration:none;transition:border-color .2s}
+a.card:hover{border-color:var(--blue)}
+.dots button{width:28px;height:28px;border:0;background:none;position:relative}
+.dots button::after{content:"";position:absolute;left:8px;top:8px;width:12px;height:12px;border-radius:50%;border:2px solid #fff;box-sizing:border-box}
+.dots button.on{background:none}
+.dots button.on::after{background:#fff}
+.swipe-hint{display:none}
+@media(max-width:600px){
+  .strip{font-size:12px}
+  .strip .wrap{padding-top:6px;padding-bottom:6px}
+  .strip .s-mail{display:none}
+  header .wrap{height:60px}
+
+  .logo{font-size:18px}
+  .burger{padding:10px 14px}
+  /* hero: photo stays visible, text sits at the bottom on a soft dark fade */
+  .hero{height:auto;min-height:0;aspect-ratio:auto}
+  .hero .copy{height:auto;min-height:min(78svh,620px);justify-content:flex-end;padding-top:120px;padding-bottom:64px}
+  .slide::after{background:linear-gradient(180deg,rgba(15,23,42,.05) 0%,rgba(15,23,42,.25) 18%,rgba(15,23,42,.75) 42%,rgba(15,23,42,.9) 100%)}
+  .hero small{font-size:11px;letter-spacing:.2em}
+  .hero h1{font-size:32px;margin:10px 0 12px;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .hero p{font-size:15px;margin-bottom:22px;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+  .hero .copy > div{display:flex;flex-direction:column;gap:10px}
+  .hero .btn{display:block;text-align:center;padding:15px 20px}
+  .btn.ghost{margin:0}
+  .dots{bottom:14px}
+  section.block{padding:48px 0}
+  .head{margin-bottom:28px}
+  .head h2,.welcome h2{font-size:27px}
+  .welcome{gap:34px}
+  .welcome .btn{display:block;text-align:center}
+  .stack{margin:14px 28px 0 0}
+  .welcome .badge{padding:12px 16px;left:10px;bottom:-16px}
+  .welcome .badge b{font-size:26px}
+  .taphint{right:22px;bottom:10px}
+  /* products and certificates: swipe sideways instead of one very long column */
+  .swipe{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:4px 20px 16px;scrollbar-width:none}
+  .swipe::-webkit-scrollbar{display:none}
+  .swipe > *{flex:0 0 82%;scroll-snap-align:center}
+  .prod:hover{transform:none}
+  .swipe-hint{display:block;text-align:center;color:var(--mute);font-size:13px;margin-top:4px}
+  .clients{grid-template-columns:1fr 1fr;gap:10px}
+  .client{height:auto;min-height:96px;flex-direction:column;padding:14px 8px}
+  .client img{height:30px;max-width:100px}
+  .client .wordmark{font-size:20px}
+  .client span{font-size:12px;letter-spacing:.1em;max-width:none;max-height:0;transform:translateY(-10px);transition:max-height 2s ease var(--d),opacity 1.6s ease var(--d),transform 2s ease var(--d),margin 2s ease var(--d)}
+  .clients.in .client span{max-height:24px;margin:10px 0 0}
+  .nums{gap:10px}
+  .num{padding:18px 8px}
+  .num:last-child{grid-column:1 / -1}
+  .contact{gap:12px;grid-template-columns:1fr}
+  .card{padding:18px}
+  .fgrid{grid-template-columns:1fr 1fr;gap:26px 18px}
+  .fgrid > div:first-child{grid-column:1 / -1}
+  footer a{padding:8px 0;margin:0}
+}
+@media(prefers-reduced-motion:reduce){.client span{transition:none!important}.slide,.prod,.stack img{transition:none}.welcome .badge.flip{animation:none}}
+/* space between the hero heading and the buttons */
+.hero h1{margin-bottom:28px}
+@media(max-width:600px){.hero h1{margin-bottom:22px}}
+
+/* ===== sections added in the editor ===== */
+.csec.bg-white{background:#fff}.csec.bg-soft{background:var(--soft)}
+.csec.bg-blue{background:linear-gradient(120deg,var(--deep),var(--blue));color:#fff}.csec.bg-blue .csec-txt p{color:#e2e8f0}
+.csec-in{display:grid;gap:44px;align-items:center}
+.csec-in.lay-left{grid-template-columns:1fr 1fr}
+.csec-in.lay-right{grid-template-columns:1fr 1fr}.csec-in.lay-right .csec-img{order:2}
+.csec-in.lay-top,.csec-in.lay-bottom{grid-template-columns:1fr;max-width:860px;gap:26px}.csec-in.lay-bottom .csec-img{order:2}
+.csec-in.lay-none{grid-template-columns:1fr;max-width:820px;text-align:center}
+.csec-img img{width:100%;max-height:520px;object-fit:cover;border-radius:14px;box-shadow:0 18px 40px rgba(30,58,138,.18);display:block}
+.csec-in.lay-top .csec-img img,.csec-in.lay-bottom .csec-img img{max-height:440px}
+.csec-txt h2{font-size:clamp(26px,3.4vw,36px);line-height:1.2;margin:0 0 16px}
+.csec-txt p{color:#475569;margin:0 0 14px;white-space:normal;font-size:17px;line-height:1.65}
+@media(max-width:760px){.csec-in.lay-left,.csec-in.lay-right{grid-template-columns:1fr;gap:24px}.csec-in.lay-right .csec-img{order:0}}
+
+/* ===== editing mode (inside link/editor) ===== */
+.site-editing [data-edit]{outline:1px dashed rgba(37,99,235,.45);outline-offset:3px;border-radius:3px;cursor:text;min-width:20px}
+.site-editing [data-edit]:hover{outline:2px dashed #2563eb}
+.site-editing [data-edit]:focus{outline:2px solid #2563eb;background:rgba(219,234,254,.5)}
+.site-editing [data-edit].edited{outline:2px solid #f59e0b;background:rgba(254,243,199,.55)}
+.site-editing .stats [data-edit]:focus,.site-editing .hero [data-edit]:focus,.site-editing .bg-blue [data-edit]:focus{background:rgba(255,255,255,.15)}
+.ed-add{display:flex;justify-content:center;padding:10px 0;background:repeating-linear-gradient(90deg,#cbd5e1 0 8px,transparent 8px 16px) center/100% 2px no-repeat}
+.ed-add button,.ed-tools button{font:700 13px Arial,sans-serif;border-radius:999px;cursor:pointer}
+.ed-add button{background:#fff;color:#2563eb;border:2px solid #2563eb;padding:8px 18px}
+.ed-add button:hover{background:#2563eb;color:#fff}
+section[data-custom]{position:relative}
+.ed-tools{position:absolute;top:10px;right:10px;z-index:5;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.ed-tools button{background:#0f1b33;color:#fff;border:0;padding:8px 14px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.ed-tools button.del{background:#dc2626}
+.site-editing body > section{position:relative}
+.ed-drag{position:absolute;top:10px;left:10px;z-index:6;font:700 13px Arial,sans-serif;background:#2563eb;color:#fff;border:0;border-radius:999px;padding:8px 14px;cursor:grab;touch-action:none;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.ed-drag:active{cursor:grabbing}
+.ed-dragging{opacity:.45;outline:3px dashed #2563eb;outline-offset:-3px}
+.ed-img{display:block;margin:8px auto 0;font:700 13px Arial,sans-serif;background:#0f1b33;color:#fff;border:0;border-radius:999px;padding:7px 16px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.2);position:relative;z-index:6}
+.ed-img:hover{background:#2563eb}
+.ed-img-hero{position:absolute;left:20px;bottom:56px;margin:0;z-index:7}
+.site-editing .prod .ed-img{margin:8px auto}
+.site-editing .client{flex-wrap:wrap;height:auto;min-height:96px;padding:10px}
+.site-editing .client .ed-img{flex-basis:100%;margin-top:6px;padding:5px 12px;font-size:12px;width:max-content;margin-left:auto;margin-right:auto}
+.site-editing .stack + .ed-img{margin-top:18px}
+.ed-line{position:absolute;left:0;right:0;height:6px;background:#2563eb;border-radius:3px;z-index:60;box-shadow:0 0 0 3px rgba(37,99,235,.25);pointer-events:none}
+</style></head><body>
+
+
+<header>
+<div class="mcontact"><span>Phone : <a href="tel:+8801819550355">01819-550355</a></span><span>Email : <a href="mailto:sakibapparelsltd@gmail.com">sakibapparelsltd@gmail.com</a></span></div>
+<div class="wrap">
+  <a class="logo" href="#top">Sakib Apparels Ltd.</a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav">
+    <a href="#top">Home</a><a href="#about">About Us</a><a href="#products">Products</a><a href="#clients">Clients</a><a href="#contact">Contact</a>
+
+  </nav>
+</div>
+</header>
+
+<section class="hero" id="top">
+  <div data-img-edit="hero.s1" class="slide on" style="background-image:url('images/factory-1.jpg')"></div>
+  <div data-img-edit="hero.s2" class="slide" style="background-image:url('https://images.unsplash.com/photo-1770196009760-bead9eb10514?auto=format&fit=crop&w=1800&q=70')"></div>
+  <div data-img-edit="hero.s3" class="slide" style="background-image:url('images/factory-cutting.jpg');background-position:50% 65%"></div>
+  <div class="wrap copy">
+    <h1 data-edit="hero.title">Your trusted knitwear manufacturing partner</h1>
+    <div><a data-edit="hero.btn1" class="btn" href="#about">Discover more</a><a data-edit="hero.btn2" class="btn ghost" href="#contact">Contact us</a></div>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section class="block" id="about"><div class="wrap welcome">
+  <div>
+    <small data-edit="about.small">About us</small>
+    <h2 data-edit="about.title">Welcome to Sakib Apparels</h2>
+    <p data-edit="about.text">Sakib Apparels Ltd, established in 2016, is a renowned garment industry committed to providing you the best quality knitwear items such as Polos, Basic T-shirts, Hoodies, Sweatshirts, Trousers, Swimsuits, Tops, Crop tops, Kids items etc. It is situated in Hemayetpur, Savar, Dhaka, Bangladesh.</p>
+    <a data-edit="about.btn" class="btn" href="#contact">Read more</a>
+  </div>
+  <div class="pic">
+    <!-- photo stack: click to sweep the front photo away. data-num / data-label are the badge text for each photo -->
+    <div class="stack" id="stack" role="button" tabindex="0" aria-label="Show next photo">
+      <img data-img-edit="about.p1" data-num="2016" data-label="Established" src="images/factory-cutting.jpg" alt="Cutting table at the Sakib Apparels factory" style="object-position:50% 70%">
+      <img data-img-edit="about.p2" data-num="10" data-label="Years of experience" src="images/factory-2.jpg" alt="Sewing line at the Sakib Apparels factory">
+      <img data-img-edit="about.p3" data-num="6" data-label="Product types" src="https://images.unsplash.com/photo-1768745888568-b3ef7c7ba366?auto=format&fit=crop&w=1100&q=70" alt="Fabric being sewn on an industrial machine">
+      <img data-img-edit="about.p4" data-num="6" data-label="Global brands" src="images/factory-3.jpg" alt="Sweatshirts on the sewing line at the Sakib Apparels factory">
+    </div>
+    <div class="badge" id="badge" aria-live="polite"><b>2016</b><span>Established</span></div>
+    <div class="taphint">Tap the photo</div>
+  </div>
+</div></section>
+
+<section class="block alt" id="products"><div class="wrap">
+  <div class="head"><small data-edit="products.small">What we make</small><h2 data-edit="products.title">Our Products</h2><p data-edit="products.sub">Our main knitwear items.</p><div class="bar"></div></div>
+  <div class="products swipe"><!-- product photos: free Unsplash pictures on white, stored in images/products -->
+    <div class="prod"><img data-img-edit="products.i1" src="images/products/polos.jpg" alt="Stack of folded polo shirts" loading="lazy"><div><h3 data-edit="products.1">Polos</h3></div></div>
+    <div class="prod"><img data-img-edit="products.i2" src="images/products/printed-tshirts.jpg" alt="Black printed T-shirt" loading="lazy"><div><h3 data-edit="products.2">Printed T-shirts</h3></div></div>
+    <div class="prod"><img data-img-edit="products.i3" src="images/products/tops.jpg" alt="Folded tops in pastel colours" loading="lazy"><div><h3 data-edit="products.3">Tops</h3></div></div>
+    <div class="prod"><img data-img-edit="products.i4" src="images/products/crop-tops.jpg" alt="Black crop top, front and back" loading="lazy"><div><h3 data-edit="products.4">Crop Tops</h3></div></div>
+    <div class="prod"><img data-img-edit="products.i5" src="images/products/hoodies.jpg" alt="Black hoodie, front and back" loading="lazy"><div><h3 data-edit="products.5">Hoodies</h3></div></div>
+    <div class="prod"><img data-img-edit="products.i6" src="images/products/sweatshirts.jpg" alt="Light blue and dark green sweatshirts" loading="lazy"><div><h3 data-edit="products.6">Sweatshirts</h3></div></div>
+  </div>
+  <p class="swipe-hint">Swipe to see more</p>
+</div></section>
+
+<section class="block" id="clients"><div class="wrap">
+  <div class="head"><small data-edit="clients.small">Trusted by</small><h2 data-edit="clients.title">Our Clients</h2><p data-edit="clients.sub">Brands and buyers we are proud to work with.</p><div class="bar"></div></div>
+  <div class="clients" id="clientList">
+    <div class="client" style="--d:0s"><img data-img-edit="clients.logo.zara" src="images/clients/zara.svg" alt="ZARA logo"><span data-edit="clients.1">ZARA</span></div>
+    <div class="client" style="--d:.45s"><img data-img-edit="clients.logo.bershka" src="images/clients/bershka.svg" alt="Bershka logo"><span data-edit="clients.2">BERSHKA</span></div>
+    <div class="client" style="--d:.9s"><b class="wordmark">Sugardoll</b><span data-edit="clients.3">SUGARDOLL</span></div>
+    <div class="client" style="--d:1.35s"><img data-img-edit="clients.logo.barbie" src="images/clients/barbie.svg" alt="Barbie logo"><span data-edit="clients.4">BARBIE</span></div>
+    <div class="client" style="--d:1.8s"><img data-img-edit="clients.logo.uniqlo" src="images/clients/uniqlo.svg" alt="UNIQLO logo"><span data-edit="clients.5">UNIQLO</span></div>
+    <div class="client" style="--d:2.25s"><img data-img-edit="clients.logo.levis" src="images/clients/levis.svg" alt="Levi's logo"><span data-edit="clients.6">LEVI'S</span></div>
+  </div>
+</div></section>
+
+<section class="block stats" id="numbers"><div class="wrap">
+  <div class="head"><small data-edit="numbers.small">Our excellence</small><h2 data-edit="numbers.title">Sakib Apparels in numbers</h2><div class="bar"></div></div>
+  <div class="nums">
+    <div class="num"><b data-edit="numbers.n1" data-to="10">10</b><span data-edit="numbers.l1">Years of experience</span></div>
+    <div class="num"><b data-edit="numbers.n2" data-to="6">6</b><span data-edit="numbers.l2">Product types</span></div>
+    <div class="num"><b data-edit="numbers.n3" data-to="6">6</b><span data-edit="numbers.l3">Global brands</span></div>
+  </div>
+</div></section>
+
+<section class="block" id="contact"><div class="wrap">
+  <div class="head"><small data-edit="contact.small">Get in touch</small><h2 data-edit="contact.title">Contact Us</h2><p data-edit="contact.sub">Reach our head office or visit our factory.</p><div class="bar"></div></div>
+  <div class="contact">
+    <div class="card"><h3 data-edit="contact.c1">Head Office</h3><p data-edit="contact.c1text">House 15, Road 17, Sector 7,<br>Uttara, Dhaka, Bangladesh</p></div>
+    <div class="card"><h3 data-edit="contact.c2">Factory</h3><p data-edit="contact.c2text">Hemayetpur, Savar,<br>Dhaka, Bangladesh</p></div>
+    <a class="card" href="tel:+8801819550355"><h3 data-edit="contact.c3">Phone</h3><p>01819-550355</p></a>
+    <a class="card" href="mailto:sakibapparelsltd@gmail.com"><h3 data-edit="contact.c4">Email</h3><p>sakibapparelsltd@gmail.com</p></a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap fgrid">
+    <div><h4 data-edit="footer.title">Sakib Apparels Ltd</h4><p data-edit="footer.tag">Your trusted knitwear manufacturing partner.</p><p data-edit="footer.office">Head office: House 15, Road 17, Sector 7, Uttara, Dhaka</p><p data-edit="footer.factory">Factory: Hemayetpur, Savar, Dhaka</p><p><a href="tel:+8801819550355">01819-550355</a><a href="mailto:sakibapparelsltd@gmail.com">sakibapparelsltd@gmail.com</a></p></div>
+    <div><h4>Company</h4><a href="#about">About Us</a><a href="#products">Our Products</a><a href="#clients">Our Clients</a></div>
+    <div><h4>Quick links</h4><a href="#contact">Contact Us</a></div>
+  </div>
+  <div class="copyright">Copyright &copy; <span id="yr"></span> Sakib Apparels Ltd. All rights reserved.</div>
+</footer>
+
+<script src="sheets-config.js"></script>
+<script src="site.js"></script>
+<script>
+// hero slider: fades every 5 seconds, dots jump to a slide
+const slides=[...document.querySelectorAll(".slide")], dots=document.getElementById("dots"); let cur=0, timer;
+slides.forEach((_,i)=>{ const b=document.createElement("button"); b.setAttribute("aria-label","Slide "+(i+1)); b.onclick=()=>{ show(i); restart(); }; dots.appendChild(b); });
+function show(i){ slides[cur].classList.remove("on"); dots.children[cur].classList.remove("on"); cur=i; slides[cur].classList.add("on"); dots.children[cur].classList.add("on"); }
+function restart(){ clearInterval(timer); timer=setInterval(()=>show((cur+1)%slides.length),5000); }
+show(0); restart();
+// swipe left / right on the hero to change photo
+let sx=null; const hero=document.querySelector(".hero");
+hero.addEventListener("touchstart",e=>{ sx=e.touches[0].clientX; },{passive:true});
+hero.addEventListener("touchend",e=>{ if(sx===null) return; const dx=e.changedTouches[0].clientX-sx; sx=null;
+  if(Math.abs(dx)>40){ show((cur+(dx<0?1:slides.length-1))%slides.length); restart(); } },{passive:true});
+
+// about us photo stack: click sweeps the front photo to the back and changes the badge
+(function(){
+  const stack=document.getElementById("stack"), badge=document.getElementById("badge"), hint=document.querySelector(".taphint");
+  let cards=[...stack.querySelectorAll("img")], busy=false;
+  const place=()=>cards.forEach((c,i)=>c.dataset.pos=Math.min(i,3));
+  const setBadge=c=>{ badge.querySelector("b").textContent=c.dataset.num; badge.querySelector("span").textContent=c.dataset.label;
+    badge.classList.remove("flip"); void badge.offsetWidth; badge.classList.add("flip"); };
+  place();
+  function next(){
+    if(busy) return; busy=true; if(hint) hint.remove();
+    const front=cards[0];
+    front.classList.add("out");                    // sweep the front photo away
+    cards=cards.slice(1).concat(front); place();   // the rest move forward
+    front.dataset.pos="0"; setBadge(cards[0]);
+    setTimeout(()=>{ front.classList.add("reset"); front.classList.remove("out"); front.dataset.pos=Math.min(cards.length-1,3);
+      void front.offsetWidth; front.classList.remove("reset"); busy=false; },520);
+  }
+  stack.addEventListener("click",next);
+  stack.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); next(); } });
+})();
+
+// phone menu
+const nav=document.getElementById("nav"), burger=document.getElementById("burger");
+burger.onclick=()=>{ const o=nav.classList.toggle("open"); burger.setAttribute("aria-expanded",o); burger.textContent=o?"Close":"Menu"; };
+nav.addEventListener("click",e=>{ if(e.target.closest("a")){ nav.classList.remove("open"); burger.setAttribute("aria-expanded",false); burger.textContent="Menu"; } });
+
+// numbers count up when they come into view
+const fmt=n=>n.toLocaleString("en-US");
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return; io.unobserve(e.target);
+  const el=e.target, to=+el.dataset.to, sfx=el.dataset.suffix||"", t0=performance.now();
+  const step=t=>{ const p=Math.min(1,(t-t0)/1400); el.textContent=fmt(Math.round(to*(1-Math.pow(1-p,3))))+(p===1?sfx:""); if(p<1) requestAnimationFrame(step); };
+  requestAnimationFrame(step); setTimeout(()=>{ el.textContent=fmt(to)+sfx; },1600); }),{threshold:.4}); // the timeout makes sure the final number always shows
+if(!(window.SITE&&SITE.editing)) document.querySelectorAll(".num b").forEach(el=>io.observe(el));
+const cl=document.getElementById("clientList");
+new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ cl.classList.add("in"); o.disconnect(); } }),{threshold:.6}).observe(cl);
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body></html>
