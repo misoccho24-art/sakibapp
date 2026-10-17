@@ -518,3 +518,6 @@ select.cell.pick option{color:#0f1b33;font-weight:600}
 /* "Complete": solid dark green so it is noticed at a glance */
 .st-complete{background:#166534!important;border-color:#14532d!important;color:#fff!important;font-weight:700!important}
 select.cell.pick.st-complete option{background:#fff;color:#0f1b33}
+/* "Not Complete": solid red */
+.st-not-complete{background:#dc2626!important;border-color:#b91c1c!important;color:#fff!important;font-weight:700!important}
+select.cell.pick.st-not-complete option{background:#fff;color:#0f1b33}
