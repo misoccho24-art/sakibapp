@@ -1,4 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Order - Sakib Apparels Ltd</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
 <div class="top"><div class="topbar"><a class="brand" href="index.html">Sakib <b>Apparels Ltd.</b></a><div class="nav"><a href="index.html">Home</a><a href="admin.html">Orders</a><a href="admin-panel.html" target="_blank" rel="noopener">Admin Panel</a></div></div></div>
@@ -13,7 +14,11 @@
 <div class="wrap"><table><thead><tr><th class="name">Design</th><th>Name</th><th>Image</th><th>Quantity</th><th>Cutting</th><th>Print</th><th>Sewing</th><th>Finishing</th></tr></thead><tbody id="b"></tbody><tfoot id="tf"></tfoot></table></div></main>
 <script src="sheets-config.js"></script>
 <script src="app.js"></script><script>start("viewer",()=>{
-const n=+new URLSearchParams(location.search).get("o")||1, focusD=+new URLSearchParams(location.search).get("d")||0, o=ORDERS.find(x=>x.id===n)||ORDERS[0], d=load();
+// order number from the short address (/order-2) or the old one (order.html?o=2)
+const qs=new URLSearchParams(location.search), pm=/\/order-(\d+)\/?$/.exec(location.pathname);
+const n=(pm?+pm[1]:+qs.get("o"))||1, focusD=+qs.get("d")||0;
+if(!pm) try{ history.replaceState(null,"","order-"+n+(focusD?"?d="+focusD:"")); }catch(e){} // show the short address
+const o=ORDERS.find(x=>x.id===n)||ORDERS[0], d=load();
 const $=id=>document.getElementById(id), title=(d._titles&&d._titles[o.id])||"", note=(d._notes&&d._notes[o.id])||"", upd=(d._updated&&d._updated[o.id])||"";
 $("t").textContent="Order "+o.id;
 const prods=(d._products&&d._products[o.id])||"";

@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Sakib Apparels Ltd</title>
+<meta name="robots" content="noindex">
+<style>
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#0f1b33;background:#f4f7fd;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+h1{font-size:28px;margin:0 0 10px}p{color:#5f6f8c;margin:0 0 22px}
+a{display:inline-block;background:#2563eb;color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:10px}
+#nf[hidden]{display:none}
+</style></head><body>
+<div id="nf" hidden><h1>Page not found</h1><p>This page does not exist.</p><a href="/">Go to the home page</a></div>
+<script>
+// Short order addresses: GitHub Pages shows this page for /order-2, /order-3 ... (there is no such file),
+// so the order page is loaded here and the address stays short. Everything else is a real "not found".
+(function(){
+  if(/^\/order-\d+\/?$/.test(location.pathname)){
+    fetch("/order.html",{cache:"no-cache"}).then(r=>{ if(!r.ok) throw 0; return r.text(); })
+      .then(html=>{ document.open(); document.write(html); document.close(); })
+      .catch(()=>{ location.replace("/order.html?o="+location.pathname.match(/\d+/)[0]+location.search.replace("?","&")); });
+  }else document.getElementById("nf").hidden=false;
+})();
+</script>
+</body></html>

@@ -1,4 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>Sakib Apparels Ltd - Orders</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head><body>
 <div class="top"><div class="topbar"><a class="brand" href="index.html">Sakib <b>Apparels Ltd.</b></a><div class="nav"><a href="index.html">Home</a><a href="admin.html">Orders</a><a href="admin-panel.html" target="_blank" rel="noopener">Admin Panel</a></div></div>
@@ -23,7 +24,7 @@ grid.innerHTML=ORDERS.map(o=>{
   const more=extra>0?`<div class="moreimg">${imgEl(imgs[3],"","")}<span>+${extra}</span></div>`:"";
   const nd=designCount(d,o);
   const body=(nd?`<div class="cdesigns"><b>${nd}</b> design${nd===1?"":"s"}</div>`:"")+(imgs.length?`<div class="thumbs">${shown}${more}</div>`:(nd?"":`<div class="empty-note">No designs added yet</div>`));
-  return `<a class="card" style="--i:${o.id-1}" href="order.html?o=${o.id}"><span class="shine"></span><div class="no">${String(o.id).padStart(2,"0")}</div><div class="lbl">Order</div>`+
+  return `<a class="card" style="--i:${o.id-1}" href="order-${o.id}"><span class="shine"></span><div class="no">${String(o.id).padStart(2,"0")}</div><div class="lbl">Order</div>`+
     ((T(o.id)||P(o.id))?`<div class="ctitle">${T(o.id)?`<span class="nm">${esc(T(o.id))}</span>`:""}${pcBadge(P(o.id))}</div>`:"")+
     ((d._dates&&d._dates[o.id])?`<div class="cdate">${fmtDate(d._dates[o.id])}</div>`:`<div class="cdate none">No date added</div>`)+
     body+(U(o.id)?`<div class="cupd">Updated ${esc(fmtWhen(U(o.id)))}</div>`:"")+`<div class="go">&rarr;</div></a>`;
@@ -36,13 +37,13 @@ function search(){
   const items=[];
   ORDERS.forEach(o=>{
     if(("order "+o.id+" "+T(o.id)).toLowerCase().includes(t))
-      items.push(`<a class="rs" href="order.html?o=${o.id}"><div class="rs-img">#${o.id}</div><div class="rs-info"><b>Order ${o.id}${T(o.id)?" &middot; "+esc(T(o.id)):""}</b><small>Open this order</small></div></a>`);
+      items.push(`<a class="rs" href="order-${o.id}"><div class="rs-img">#${o.id}</div><div class="rs-info"><b>Order ${o.id}${T(o.id)?" &middot; "+esc(T(o.id)):""}</b><small>Open this order</small></div></a>`);
   });
   ORDERS.forEach(o=>{
     for(let i=1;i<=designCount(d,o);i++){
       const r=getRow(d,o.id,i);
       if((r.name||"").toLowerCase().includes(t) || ("design "+i)===t){
-        items.push(`<a class="rs" href="order.html?o=${o.id}&d=${i}"><div class="rs-img">${imgEl(r,"","","&#9707;")}</div><div class="rs-info"><b>${r.name?esc(r.name):"Design "+i}</b><small>Order ${o.id}${T(o.id)?" &middot; "+esc(T(o.id)):""} &middot; Design ${i}</small></div></a>`);
+        items.push(`<a class="rs" href="order-${o.id}?d=${i}"><div class="rs-img">${imgEl(r,"","","&#9707;")}</div><div class="rs-info"><b>${r.name?esc(r.name):"Design "+i}</b><small>Order ${o.id}${T(o.id)?" &middot; "+esc(T(o.id)):""} &middot; Design ${i}</small></div></a>`);
       }
     }
   });
